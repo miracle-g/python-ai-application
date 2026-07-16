@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.streamlit/secrets.toml
+data/
+.DS_Store
+
+# Claude Code ローカル個人設定
+.claude/settings.local.json
