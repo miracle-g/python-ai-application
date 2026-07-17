@@ -8,10 +8,12 @@ from __future__ import annotations
 import streamlit as st
 
 from config import APP_ICON, APP_NAME
+from core.auth import require_auth
 from core.gemini_client import resolve_api_key
 from core.ui import render_sidebar
 
 st.set_page_config(page_title=APP_NAME, page_icon=APP_ICON, layout="wide")
+require_auth()  # パスワードが設定されていれば未認証者をここで止める
 render_sidebar()
 
 st.title(f"{APP_ICON} {APP_NAME}")

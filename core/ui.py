@@ -12,6 +12,7 @@ import streamlit as st
 
 from config import APP_ICON, APP_NAME, AVAILABLE_MODELS, DEFAULT_MODEL, DEFAULT_TEMPERATURE
 from core import history
+from core.auth import require_auth
 from core.gemini_client import GeminiError, generate_stream, resolve_api_key
 
 CUSTOM_MODEL_LABEL = "その他（手入力）"
@@ -34,6 +35,7 @@ class Settings:
 
 def setup_page(title: str, icon: str) -> None:
     st.set_page_config(page_title=f"{title} | {APP_NAME}", page_icon=icon, layout="wide")
+    require_auth()  # パスワードが設定されていれば未認証者をここで止める
     st.title(f"{icon} {title}")
 
 
